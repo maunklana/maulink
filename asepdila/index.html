@@ -148,35 +148,33 @@
 		<div class="container">
 			<div id="player-elem" class="row text-center w-100">
 				<div class="music-controler"> 
-					<span id="calamansiplaycontroler"> 
-						<span class="calamansi" data-skin="calamansi/skins/in-text/" data-source="music/Arctic Monkeys - Baby I'm Yours.mp3"></span>
-					</span>
+					<span id="calamansiplaycontroler"></span>
 					&nbsp;
 					<button type="button" class="btn btn-sm btn-outline-dark">	
 						<span><i class="bi bi-skip-forward-fill"></i></span></div>
 					</button>
-				<small><i id="playindicator" class="bi bi-disc-fill"></i> <span> <i class="bi bi-explicit"></i> Arctic Monkeys - Baby I'm Yours</span> <i class="bi bi-music-note"></i></small>
+				<small><i id="playindicator" class="bi bi-disc-fill"></i> <span id="player-title"></span> <i class="bi bi-music-note"></i></small>
 			</div>
 		</div>
 	</nav>
 	<nav style="position:fixed;" class="xhidden navbar navbar-expand fixed-bottom">
 		<div class="container">
 			<ul class="navbar-nav nav-justified w-100 bg-light shadow ms-2 me-2 bg-body rounded-3 navbotomfloating">
-			  <li class="nav-item">
+				<li class="nav-item">
 				<a href="#beranda" class="nav-link"><i class="fa-solid fa-gopuram"></i><br/><small>Beranda</small></a>
-			  </li>
-			  <li class="nav-item">
+				</li>
+				<li class="nav-item">
 				<a href="#mempelai" class="nav-link"><i class="fa-solid fa-children"></i><br/><small>Mempelai</small></a>
-			  </li>
-			  <li class="nav-item">
+				</li>
+				<li class="nav-item">
 				<a href="#acara" class="nav-link"><i class="fa-solid fa-calendar-days"></i><br/><small>Acara</small></a>
-			  </li>
-			  <li class="nav-item">
+				</li>
+				<li class="nav-item">
 				<a href="#galeri" class="nav-link"><i class="fa-solid fa-images"></i><br/><small>Galeri</small></a>
-			  </li>
-			  <li class="nav-item">
+				</li>
+				<li class="nav-item">
 				<a href="#ucapan" class="nav-link"><i class="fa-solid fa-comment"></i><br/><small>Ucapan</small></a>
-			  </li>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -247,7 +245,7 @@
 	
 	<div id="footer" class="xhidden container">
 		<nav style="background:none!important;" class="navbar fixed-bottom navbar-expand navbar-nav nav-justified w-100 mb-5 ps-2 pb-5 pe-2 bg-body">
-		  <div class="row">
+			<div class="row">
 			<div class="col-sm">
 				One of three columns
 			</div>
@@ -266,70 +264,101 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="calamansi/calamansi.min.js"></script>
+	<script src="playlist.json"></script>
 	
 	<script>
-	Swal.fire({
-	  title: '<div class="row envelope"><h1><sup style="font-size:3.5rem" title="Asep Maulana Nuriman (Maunklana)" data-bs-toggle="tooltip" data-bs-placement="top">Asep</sup><small>&</small><sub style="font-size:3.5rem" title="Nabila Dea Santika (Dila)" data-bs-toggle="tooltip" data-bs-placement="top">Nabila</sub></h1></div>',
-	  html: '<p class="greatings">Kepada Bapak/Ibu/Saudara/i</p> <h2 class="receivername">Jhon Doe</h2> <p class="greatings">Kami Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.</p>',
-	  footer: '<small class="envelopefooter">Build with <i class="bi bi-suit-heart-fill" style="font-size:0.5rem;padding:0 0.1rem;"></i> in Bandung by Asep under kukulutus of Nabila</small>',
-	  confirmButtonText: '<i class="bi bi-envelope-paper-fill"></i>&nbsp;Buka Undangan',
-	   confirmButtonColor: '#991188',
-	  width: '100%',
-	  heightAuto: false,
-	  grow: 'fullscreen',
-	  background: 'transparent',
-	  backdrop: `
-		linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url("img/bg-landing.jpg")
-		no-repeat center/auto 100%
-	  `,
-	  showClass: {
-		popup: '',                       // disable icon animation
-	  },
-	  hideClass: {
-		popup: 'animate__animated animate__slideOutUp',
-		backdrop: 'animate__animated animate__slideOutUp',
-	  },
-	  allowOutsideClick: false,
-	  allowEscapeKey: false,
-	  allowEnterKey: false,
-	  imageUrl: 'img/asepdila.png',
-	  imageWidth: 300,
-	  imageHeight: 300,
-	  imageAlt: 'Asep Maulana Nuriman (Maunklana) & Nabila Dea Santika (Dila)'
-	}).then((result) => {
-		showInvitation();
-	})
-	
-	var showInvitation = function(){
-		$('.xhidden').each(function() {
-			$(this).addClass('animate__animated animate__slideInUp');
-			$(this).css('visibility', 'visible');
-		});
+	let cpi = 0;
+	let createcalamnsielement = function(){
+		let p = playlist[cpi];
+		$("#calamansiplaycontroler").empty();
+		$("#calamansiplaycontroler").html('<span class="calamansi" data-skin="https://maunklana.github.io/maulink/asepdila/calamansi/skins/in-text/" data-source="https://maunklana.github.io/maulink/asepdila/music/'+p.file+'"></span>');
+		$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' '+p.artis+' - '+p.title);
 	}
 	
-	$('.nav-link').each(function() {
-		$(this).on('touchend click', function(event) {
-			event.preventDefault();
-			$('html,body').animate({scrollTop: $($(this).attr('href')).offset().top},'slow');
+	$(function() {		
+		createcalamnsielement();
+
+		let players = Calamansi.autoload();
+		let playerid = players[0].id;
+						
+		CalamansiEvents.on('initialized', function (player) {
+			playerid = player.id;
+			
 		});
-	});
-	
-	Calamansi.autoload();
-	CalamansiEvents.on('initialized', function (player) {
-		console.log(player);
-	});
-	CalamansiEvents.on('trackEnded', function (player) {
-		$("#playindicator").removeClass("rotating-spin");
-		console.log(player);
-	});
-	CalamansiEvents.on('play', function (player) {
-		$("#playindicator").addClass("rotating-spin");
-		console.log(player);
-	});
-	CalamansiEvents.on('pause', function (player) {
-		$("#playindicator").removeClass("rotating-spin");
-		console.log(player);
+		CalamansiEvents.on('trackEnded', function (player) {
+			cpi = cpi+1;
+			if(playlist.length >= cpi) cpi = 0;
+			createcalamnsielement();
+			Calamansi.autoload();
+		});
+		CalamansiEvents.on('play', function (player) {
+			$("#playindicator").addClass("rotating-spin");
+		});
+		CalamansiEvents.on('pause', function (player) {
+			$("#playindicator").removeClass("rotating-spin");
+		});
+		
+		Swal.fire({
+			title: '<div class="row envelope"><h1><sup style="font-size:3.5rem" title="Asep Maulana Nuriman (Maunklana)" data-bs-toggle="tooltip" data-bs-placement="top">Asep</sup><small>&</small><sub style="font-size:3.5rem" title="Nabila Dea Santika (Dila)" data-bs-toggle="tooltip" data-bs-placement="top">Nabila</sub></h1></div>',
+			html: '<p class="greatings">Kepada Bapak/Ibu/Saudara/i</p> <h2 class="receivername">Jhon Doe</h2> <p class="greatings">Kami Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.</p>',
+			footer: '<small class="envelopefooter">Build with <i class="bi bi-suit-heart-fill" style="font-size:0.5rem;padding:0 0.1rem;"></i> in Bandung by Asep under kukulutus of Nabila</small>',
+			confirmButtonText: '<i class="bi bi-envelope-paper-fill"></i>&nbsp;Buka Undangan',
+			confirmButtonColor: '#991188', //Warna kesukaan Nabila
+			width: '100%',
+			heightAuto: false,
+			grow: 'fullscreen',
+			background: 'transparent',
+			backdrop: `
+			linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+			url("img/bg-landing.jpg")
+			no-repeat center/auto 100%
+			`,
+			showClass: {
+				popup: '',// disable icon animation
+			},
+			hideClass: {
+				popup: 'animate__animated animate__slideOutUp',
+				backdrop: 'animate__animated animate__slideOutUp',
+			},
+			allowOutsideClick: false,
+			allowEscapeKey: false,
+			allowEnterKey: false,
+			imageUrl: 'img/asepdila.png',
+			imageWidth: 300,
+			imageHeight: 300,
+			imageAlt: 'Asep Maulana Nuriman (Maunklana) & Nabila Dea Santika (Dila)'
+		}).then((result) => {
+			showInvitation();			
+			Swal.fire({
+				title: '',
+				html: '<h1><i class="bi bi-volume-up-fill"></i></h1>Nyalakan backsound?',
+				showCancelButton: true,
+				confirmButtonText: 'Ya, nyalakan',
+				cancelButtonText: 'Tidak',
+				reverseButtons: true,
+				allowOutsideClick: false,
+				allowEscapeKey: false,
+				allowEnterKey: false
+			}).then((result) => {					
+				if (result.isConfirmed) {
+					$("#"+playerid).find("a")[0].click();
+				}
+			})
+		})
+		
+		var showInvitation = function(){
+			$('.xhidden').each(function() {
+				$(this).addClass('animate__animated animate__slideInUp');
+				$(this).css('visibility', 'visible');
+			});
+		}
+		
+		$('.nav-link').each(function() {
+			$(this).on('touchend click', function(event) {
+				event.preventDefault();
+				$('html,body').animate({scrollTop: $($(this).attr('href')).offset().top},'slow');
+			});
+		});
 	});
 	</script>
   </body>
