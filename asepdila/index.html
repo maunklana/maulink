@@ -147,7 +147,7 @@
 		display: inline-block;
 		white-space: nowrap;
 		max-width: 90%;
-		margin-bottom: -0.2rem;
+		margin-bottom: -0.3rem;
 	}
 	</style>
   </head>
@@ -287,7 +287,6 @@
 	}
 	
 	let nextsongs = function(){
-		players.audio.pause();
 		cpi = cpi+1;
 		if(cpi >= playlist.length ) cpi = 0;
 		let p = playlist[cpi];
@@ -363,9 +362,6 @@
 				confirmButtonText: 'Ya, nyalakan',
 				cancelButtonText: 'Tidak',
 				reverseButtons: true,
-				allowOutsideClick: false,
-				allowEscapeKey: false,
-				allowEnterKey: false
 			}).then((result) => {					
 				if (result.isConfirmed) {
 					players.audio.play();
