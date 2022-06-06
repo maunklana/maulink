@@ -333,63 +333,47 @@
 			}
 		});
 		
-		if(typeof kepada == 'undefined'){
-			receiverhtml = '<p class="greatings">Kepada Teman-Teman/Rekan-Rekan</p> <h2 class="receivername">'+group+'</h2><p class="greatings">Kami Mengundang Kalian Untuk Hadir Di Acara Pernikahan Kami.</p><small style="font-size:0.7rem;opacity: 0.5;color:white;">Mohon maaf karena kami tidak menyampaikan secara pribadi</small>';
-		}else{
-			receiverhtml = '<p class="greatings">Kepada Bapak/Ibu/Saudara/i</p> <h2 class="receivername">'+kepada+'</h2><p class="greatings">Kami Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.</p>';
-		}
-		
-		Swal.fire({
-			title: '<div class="row envelope"><h1><sup style="font-size:3.5rem" title="Asep Maulana Nuriman (Maunklana)" data-bs-toggle="tooltip" data-bs-placement="top">Asep</sup><small>&</small><sub style="font-size:3.5rem" title="Nabila Dea Santika (Dila)" data-bs-toggle="tooltip" data-bs-placement="top">Nabila</sub></h1></div>',
-			html: receiverhtml,
-			footer: '<small class="envelopefooter">Build with <i class="bi bi-suit-heart-fill" style="font-size:0.5rem;padding:0 0.1rem;"></i> in Bandung by Asep under kukulutus of Nabila</small>',
-			confirmButtonText: '<i class="bi bi-envelope-paper-fill"></i>&nbsp;&nbsp;Buka Undangan',
-			confirmButtonColor: '#991188', //Warna kesukaan Nabila
-			width: '100%',
-			heightAuto: false,
-			grow: 'fullscreen',
-			background: 'transparent',
-			backdrop: `
-			linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-			url("img/bg-landing.jpg")
-			no-repeat center/auto 100%
-			`,
-			showClass: {
-				popup: '',// disable icon animation
-			},
-			hideClass: {
-				popup: 'animate__animated animate__slideOutUp',
-				backdrop: 'animate__animated animate__slideOutUp',
-			},
-			allowOutsideClick: false,
-			allowEscapeKey: false,
-			allowEnterKey: false,
-			imageUrl: 'img/asepdila.png',
-			imageWidth: 300,
-			imageHeight: 300,
-			imageAlt: 'Asep Maulana Nuriman (Maunklana) & Nabila Dea Santika (Dila)'
-		}).then((result) => {
-			showInvitation();			
+		if(typeof kepada == 'undefined' && typeof group == 'undefined'){
 			Swal.fire({
-				title: '',
-				html: '<h1><i class="bi bi-volume-up-fill"></i></h1>Nyalakan backsound?',
+				html: '<span style="color:white;"><h1><i class="bi bi-person-bounding-box"></i></h1>Masukkan nama kamu!</span>',
+				input: 'text',
+				inputAttributes: {
+					autocapitalize: 'off'
+				},
+				color: "white",
+				showCancelButton: false,
+				confirmButtonText: 'Lanjut',
 				confirmButtonColor: '#991188', //Warna kesukaan Nabila
-				showCancelButton: true,
-				confirmButtonText: 'Ya, nyalakan',
-				cancelButtonText: 'Tidak',
-				reverseButtons: true,
-			}).then((result) => {					
+				background: 'transparent',
+				backdrop: `
+				linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+				url("img/bg-landing.jpg")
+				no-repeat center/auto 100%
+				`,
+				allowOutsideClick: false,
+				allowEscapeKey: false,
+				allowEnterKey: false
+			}).then((result) => {
+				console.log(result);
 				if (result.isConfirmed) {
-					players.audio.play();
+					kepada = result.value;
+					if(typeof kepada == 'undefined'){
+						receiverhtml = '<p class="greatings">Kepada Teman-Teman/Rekan-Rekan</p> <h2 class="receivername">'+group+'</h2><p class="greatings">Kami Mengundang Kalian Untuk Hadir Di Acara Pernikahan Kami.</p><small style="font-size:0.7rem;opacity: 0.5;color:white;">Mohon maaf karena kami tidak menyampaikan secara pribadi</small>';
+					}else{
+						receiverhtml = '<p class="greatings">Kepada Bapak/Ibu/Saudara/i</p> <h2 class="receivername">'+kepada+'</h2><p class="greatings">Kami Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.</p>';
+					}
+					
+					showEnvelope();
 				}
-			})
-		})
-		
-		var showInvitation = function(){
-			$('.xhidden').each(function() {
-				$(this).addClass('animate__animated animate__slideInUp');
-				$(this).css('visibility', 'visible');
 			});
+		}else{
+			if(typeof kepada == 'undefined'){
+				receiverhtml = '<p class="greatings">Kepada Teman-Teman/Rekan-Rekan</p> <h2 class="receivername">'+group+'</h2><p class="greatings">Kami Mengundang Kalian Untuk Hadir Di Acara Pernikahan Kami.</p><small style="font-size:0.7rem;opacity: 0.5;color:white;">Mohon maaf karena kami tidak menyampaikan secara pribadi</small>';
+			}else{
+				receiverhtml = '<p class="greatings">Kepada Bapak/Ibu/Saudara/i</p> <h2 class="receivername">'+kepada+'</h2><p class="greatings">Kami Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.</p>';
+			}
+			
+			showEnvelope();
 		}
 		
 		$('.nav-link').each(function() {
