@@ -319,14 +319,10 @@
 		
 		CalamansiEvents.on('play', function (player) {
 			$("#playindicator").addClass("rotating-spin");
-			isplay = true;			
 		});
 		
 		CalamansiEvents.on('pause', function (player) {
-			if(isplay){
-				$("#playindicator").removeClass("rotating-spin");	
-				isplay = false;
-			}
+			$("#playindicator").removeClass("rotating-spin");
 		});
 		
 		if(typeof kepada == 'undefined' && typeof group == 'undefined'){
