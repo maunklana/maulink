@@ -1,3 +1,7 @@
+const queryParams = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
+
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;
 
@@ -14,4 +18,8 @@ function shuffle(array) {
   }
 
   return array;
+}
+
+function encodeHTML(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 }
