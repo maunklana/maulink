@@ -381,13 +381,13 @@
 		}
 		
 		$('.nav-link').each(function() {
-			$(this).on('touchend click', function(event) {
+			$(this).on('click', function(event) {
 				event.preventDefault();
 				$('html,body').animate({scrollTop: $($(this).attr('href')).offset().top},'slow');
 			});
 		});
 		
-		$("#nextsongs").on('touchend click', function(event) {
+		$("#nextsongs").on('click', function(event) {
 			nextsongs();
 		});
 	});
