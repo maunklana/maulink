@@ -379,7 +379,7 @@
 		$('.nav-link').each(function() {
 			$(this).on('click', function(event) {
 				event.preventDefault();
-				$('html,body').animate({scrollTop: $($(this).attr('href')).offset().top},2000);
+				$('html,body').animate({scrollTop: $($(this).attr('href')).offset().top}, 500);
 			});
 		});
 		
