@@ -274,11 +274,11 @@
 	<script src="playlist.json"></script>
 	
 	<script>
-	let kepada,group,receiverhtml;
-	if(queryParams.to !== null){
+	let kepada,dari,group,receiverhtml;
+	if(queryParams.to !== null && queryParams.to !== ""){
 		kepada = encodeHTML(queryParams.to);
 	}
-	if(queryParams.group !== null){
+	if(queryParams.group !== null && queryParams.group !== ""){
 		group = encodeHTML(queryParams.group);
 	}
 	playlist = shuffle(playlist);
