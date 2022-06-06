@@ -289,6 +289,10 @@
 		$("#calamansiplaycontroler").empty();
 		$("#calamansiplaycontroler").html('<span class="calamansi" data-skin="https://maunklana.github.io/maulink/asepdila/calamansi/skins/in-text/" data-source="https://maunklana.github.io/maulink/asepdila/music/'+p.file+'"></span>');
 		$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
+		
+		if ($(".marquee").width() >= $("nav").width()/100*65) {
+			$('.marquee').marquee({duration: 15000, startVisible: true, duplicated: true});
+		}
 	}
 	
 	let nextsongs = function(){
