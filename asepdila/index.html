@@ -252,13 +252,28 @@
 		</div>
 	</div>
 	
-	<div id="footer" class="xhidden container">
-		<nav style="background:none!important;margin-bottom:7rem;" class="navbar fixed-bottom navbar-expand navbar-nav nav-justified w-100 ps-2 pb-5 pe-2 bg-body">
+	<div id="footer" style="background-color:#f9f9e1;box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);-webkit-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);-moz-box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.71);" class="xhidden container pt-5 pb-5">
+		<nav style="background:none!important;margin-bottom:9rem;padding-top:0.25rem;" class="navbar navbar-expand navbar-nav nav-justified w-100 ps-2 pb-5 pe-2 bg-body">
 			<div class="row">
-			<div class="col-12">
-				<div id="qrbukutamu"></div>
+				<div class="col-12 text-center mb-2">
+					<small>Tujukan QR Code ini kepada panitia acara pernikahan untuk pencatatan pada buku tamu</small>
+				</div>
 			</div>
-		</div>
+			<div class="row">
+				<div class="col-12">
+					<div id="qrbukutamu"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 text-center mt-2">
+					<h4><span id="qr-name">Asep Maulana Nuriman</span></h4>
+				</div>
+			<div class="row">
+			</div>
+				<div class="col-12 text-center">
+					<h6><span id="qr-domisili">KOPO</span></h6>
+				</div>
+			</div>
 		</nav>
 	</div>
 	
@@ -281,32 +296,10 @@
 	if(queryParams.group !== null && queryParams.group !== ""){
 		group = encodeHTML(queryParams.group);
 	}
+	
 	playlist = shuffle(playlist);
 	let cpi = 0;
 	let players;
-	let createcalamnsielement = function(){
-		let p = playlist[cpi];
-		$("#calamansiplaycontroler").empty();
-		$("#calamansiplaycontroler").html('<span class="calamansi" data-skin="https://maunklana.github.io/maulink/asepdila/calamansi/skins/in-text/" data-source="https://maunklana.github.io/maulink/asepdila/music/'+p.file+'"></span>');
-		$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
-		
-		if ($(".marquee").width() >= $("nav").width()/100*65) {
-			$('.marquee').marquee({duration: 15000, startVisible: true, duplicated: true});
-		}
-	}
-	
-	let nextsongs = function(){
-		cpi = cpi+1;
-		if(cpi >= playlist.length ) cpi = 0;
-		let p = playlist[cpi];
-		players.audio.load('https://maunklana.github.io/maulink/asepdila/music/'+p.file);
-		$("#player-title").html((p.explicit ? '<i class="bi bi-explicit"></i>' : '')+' <span class="marquee">'+p.artis+' - '+p.title+'</span>');
-		players.audio.play();
-		
-		if ($(".marquee").width() >= $("nav").width()/100*65) {
-			$('.marquee').marquee({duration: 15000, startVisible: true, duplicated: true});
-		}
-	}
 	
 	$(function() {
 		createcalamnsielement();
@@ -330,47 +323,12 @@
 		});
 		
 		if(typeof kepada == 'undefined' && typeof group == 'undefined'){
-			Swal.fire({
-				html: '<span style="color:white;"><h1><i class="bi bi-person-bounding-box"></i></h1>Masukkan nama kamu!</span>',
-				input: 'text',
-				inputAttributes: {
-					autocapitalize: 'off'
-				},
-				color: "white",
-				showCancelButton: false,
-				confirmButtonText: 'Lanjut',
-				confirmButtonColor: '#991188', //Warna kesukaan Nabila
-				background: 'transparent',
-				backdrop: `
-				linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-				url("img/bg-landing.jpg")
-				no-repeat center/auto 100%
-				`,
-				allowOutsideClick: false,
-				allowEscapeKey: false,
-				allowEnterKey: false
-			}).then((result) => {
-				console.log(result);
-				if (result.isConfirmed) {
-					kepada = result.value;
-					if(typeof kepada == 'undefined'){
-						receiverhtml = groupgreatingtmp.replace(/{NAMA}/ig, group);
-					}else{
-						receiverhtml = kepadagreatingtmp.replace(/{NAMA}/ig, kepada);
-						generateQrBukuTamu();
-					}
-					
-					addURLParameter('to', kepada);
-					
-					showEnvelope();
-				}
-			});
+			swallAskName(showEnvelope);
 		}else{
 			if(typeof kepada == 'undefined'){
 				receiverhtml = groupgreatingtmp.replace(/{NAMA}/ig, group);
 			}else{
 				receiverhtml = kepadagreatingtmp.replace(/{NAMA}/ig, kepada);
-				generateQrBukuTamu();
 			}
 			
 			showEnvelope();
