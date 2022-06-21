@@ -102,7 +102,7 @@ const nextsongs = function(){
 
 const showEnvelope = function(){
 	Swal.fire({
-		title: '<div class="row envelope"><h1><sup style="font-size:3.5rem" title="Asep Maulana Nuriman (Maunklana)" data-bs-toggle="tooltip" data-bs-placement="top">Asep</sup><small>&</small><sub style="font-size:3.5rem" title="Nabila Dea Santika (Dila)" data-bs-toggle="tooltip" data-bs-placement="top">Nabila</sub></h1></div>',
+		title: `<div class="row envelope"><h1><sup style="font-size:3.5rem" title="${config.groom.fullname} (${config.groom.nickname})" data-bs-toggle="tooltip" data-bs-placement="top">${config.groom.firstname}</sup><small>&</small><sub style="font-size:3.5rem" title="${config.bride.fullname} (${config.bride.nickname})" data-bs-toggle="tooltip" data-bs-placement="top">${config.bride.firstname}</sub></h1></div>`,
 		html: receiverhtml,
 		footer: '<small class="envelopefooter">Build with <i class="bi bi-suit-heart-fill" style="font-size:0.5rem;padding:0 0.1rem;"></i> in Bandung by Asep under kukulutus of Nabila</small>',
 		confirmButtonText: '<i class="bi bi-envelope-paper-fill"></i>&nbsp;&nbsp;Buka Undangan',
@@ -129,7 +129,7 @@ const showEnvelope = function(){
 		imageUrl: 'img/asepdila.png',
 		imageWidth: 300,
 		imageHeight: 300,
-		imageAlt: 'Asep Maulana Nuriman (Maunklana) & Nabila Dea Santika (Dila)'
+		imageAlt: `${config.groom.fullname} (${config.groom.nickname}) & ${config.bride.fullname} (${config.bride.nickname})`
 	}).then((result) => {
 		showInvitation();
 		if(typeof kepada == 'undefined' || kepada == ''){
