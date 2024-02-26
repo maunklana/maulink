@@ -62,7 +62,6 @@ function adaptiveSize(){
 			{
 			breakpoint: 768,
 				settings: {
-					arrows: true,
 					centerMode: true,
 					slidesToShow: 1
 				}
@@ -70,7 +69,6 @@ function adaptiveSize(){
 			{
 				breakpoint: 480,
 					settings: {
-					arrows: true,
 					centerMode: false,
 					slidesToShow: 1,
 					variableWidth: false,

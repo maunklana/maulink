@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tunas Toyota Kiaracondong - Bandung Authorized Dealer</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+    <link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
     <link href="vendor/slick/slick.css" rel="stylesheet">
     <link href="vendor/slick/slick-theme.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
   </head>
-  <body>
+  <body style="overflow-x:hidden;">
 	<div id="isMobile" class="d-none d-sm-inline"></div>
 	<div id="main-navbar" class="container-fluid">
 		<nav class="navbar navbar-expand-md">
@@ -73,7 +75,7 @@
 			<div class="col text-center">
 				<h4 class="text-danger">
 					<span class="fw-bolder">Selamat datang</span>
-					<small class="text-body-secondary">di <span class="fw-semibold">Tunas Toyota Kiaracondong</a></small>
+					<small class="text-body-secondary">di <span class="fw-semibold">Tunas Toyota Kiaracondong</span></small>
 				</h4>
 			</div>
 		</div>
@@ -88,7 +90,7 @@
 					<div class="card-body">
 						<h5 class="card-title text-danger"><strong>#Gebyar Hadiah Toyota Auto2000</strong></h5>
 						<h4 class="card-subtitle mb-2 text-body-secondary"><strong>Yuk di-PILIH di-PILIH..</strong></h4>
-						<p class="card-text">Apa sih yang di-PILIH? Ya Auto2000, dong!<br/>
+						<p class="card-text">Apa sih yang di-PILIH? Ya <strong>Auto2000</strong>, dong!<br/>
 						<br/>
 						AutoFamily mau liburan dan jalan-jalan? Bisaa! Atau, dapetin motor Honda BeAT CBS? Bisa jugaa! Semua akan dapat untungnya, kalau AutoFamily PILIH beli dan servis Toyota di Auto2000.<br/>
 						<br/>
@@ -98,9 +100,9 @@
 						<br/>
 						Beli dan Servis Toyota, Auto2000 Solusinya!<br/>
 						<br/>
-						#PILIHAUTO2000<br/>
-						#Auto2000<br/>
-						#AutoDeal<br/>
+						<strong>#PILIHAUTO2000</strong><br/>
+						<strong>#Auto2000</strong><br/>
+						<strong>#AutoDeal</strong><br/>
 						</p>
 					</div>
 				</div>
@@ -110,17 +112,18 @@
 		</div>
 	</div>
 	
-	<div id="rekomendasi" class="container-fluid mt-4 pt-4 pb-4 bg-body-tertiary">
+	<div id="rekomendasi" class="container-fluid mt-4 pt-5 pb-5 bg-body-tertiary">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg">
+			<div class="row mb-3">
+				<div class="col-lg ext-start">
 					<h3>Rekomendasi Mobil</h3>
 					<h6>Beberapa best seller Mobil Toyota yang ada di dealer kami.</h6>
 				</div>
-				<div class="col">
+				<div class="col-lg border-start text-end">
+					<button type="button" class="btn btn-danger btn-lg rounded-0">Semua Mobil <i class="fa-solid fa-arrow-trend-up"></i></button>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row ps-3 pe-3">
 				<div class="col">
 					<div class="recommend-slider">
 						<div class="card rounded-4 text-center p-2 ms-3 me-3">
@@ -194,9 +197,87 @@
 			</div>
 		</div>
 	</div>
+	<div id="rekomendasi" class="container-fluid pt-5 pb-5 ms-0 me-0 ps-0 pe-0">
+		<div class="row">
+			<div class="col-lg">
+				<a href="#" title="Test drive">
+					<div class="card border border-0">
+						<div class="card-body w-100 pt-4 pb-4 floating-on-image">
+							<h4 class="card-title fs-bold ms-2">Test Drive</h4>
+						</div>
+						<img src="img/cardriver-toyota-test.jpg" class="img-fluid" alt="...">
+					</div>
+				</a>
+			</div>
+			<div class="col-lg">
+				<a href="#" title="Promo Terbaru">
+					<div class="card border border-0">
+						<div class="card-body w-100 pt-4 pb-4 floating-on-image">
+							<h4 class="card-title fs-bold ms-2">Promo Terbaru</h4>
+						</div>
+						<img src="img/toyota-promo.jpg" class="img-fluid" alt="...">
+					</div>
+				</a>
+			</div>
+			<div class="col-lg">
+				<a href="#" title="Price List">
+					<div class="card border border-0">
+						<div class="card-body w-100 pt-4 pb-4 floating-on-image">
+							<h4 class="card-title fs-bold ms-2">Price List</h4>
+						</div>
+						<img src="img/toyota-price-list.jpg" class="img-fluid" alt="...">
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div id="whywe" class="container pt-5 pb-5">
+		<div class="row">
+			<div class="col text-center mb-5">
+				<h4 class="text-danger">
+					<small class="text-body-secondary"><span class="fw-semibold">Kemudahan Pesan Mobil Toyota</span> di</small>
+					<span class="fw-bolder">Tunas Toyota Kiaracondong</span>
+				</h4>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col text-center">
+				<div class="card border border-0">
+					<img src="img/hitung-simulasi-250x198.png" class="card-img-top whywe-img" alt="...">
+					<div class="card-body">
+						<h5 class="text-danger mb-2"><strong>1.</strong></h5>
+						<h4 class="card-title"><strong>Hitung Simulasi</strong></h4>
+						<p>Kami langsung ke lokasi Anda untuk pengurusan berkas, pembayaran DP, dll</p>
+					</div>
+				</div>
+			</div>
+			<div class="col text-center">
+				<div class="card bg-body-tertiary p-2">
+					<img src="img/hubungi-kami-250x198.png" class="card-img-top whywe-img" alt="...">
+					<div class="card-body">
+						<h5 class="text-danger mb-2"><strong>2.</strong></h5>
+						<h4 class="card-title"><strong>Hubungi Kami</strong></h4>
+						<p>Kami langsung ke lokasi Anda untuk pengurusan berkas, pembayaran DP, dll</p>
+					</div>
+				</div>
+			</div>
+			<div class="col text-center">
+				<div class="card border border-0">
+					<img src="img/kirim-data-250x198.png" class="card-img-top whywe-img" alt="...">
+					<div class="card-body">
+						<h5 class="text-danger mb-2"><strong>3.</strong></h5>
+						<h4 class="card-title"><strong>Penjemputan Data</strong></h4>
+						<p>Kami langsung ke lokasi Anda untuk pengurusan berkas, pembayaran DP, dll</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="vendor/slick/slick.min.js"></script>
+    <script src="vendor/fontawesome/js/fontawesome.min.js"></script>
+    <script src="vendor/fontawesome/js/all.min.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
