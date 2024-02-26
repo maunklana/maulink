@@ -1,0 +1,13 @@
+#main-navbar,#toyota-navbar-brand-logo,.navbar,.nav-text,.navbar-toggler-icon {
+	transition: width 0.5s, height 0.5s, font-size 0.5s;
+}
+.nav-link{
+	font-weight:bold;
+}
+.nav-link:hover{
+	color:rgb(233, 10, 30);
+}
+.fixed-top{
+	background:rgba(255,255,255,.8);
+	backdrop-filter: blur(5px);
+}
