@@ -86,18 +86,20 @@ function adaptiveSize(){
 			autoplaySpeed: 2000,
 			responsive: [
 				{
-				breakpoint: 768,
+				breakpoint: 990,
 					settings: {
-						slidesToShow: 3
+						slidesToShow: 2
 					}
 				},
 				{
 					breakpoint: 480,
 						settings: {
-						slidesToShow: 2
+						slidesToShow: 1
 				  }
 				}
 			]
 		});
+		
+		$('#footer-years').text(new Date().getFullYear());
 	});
 })(jQuery);

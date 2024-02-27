@@ -2,21 +2,34 @@
 	transition: width 0.5s, height 0.5s, font-size 0.5s;
 }
 .nav-link{
-	font-weight:bold;
+	font-weight: bolder;
 }
 .nav-link:hover{
 	color:rgb(233, 10, 30);
+}
+.nav-link.active{
+	color:rgb(233, 10, 30)!important;
 }
 .fixed-top{
 	background: rgba(255,255,255,.8);
 	backdrop-filter: blur(5px);
 }
 .floating-on-image{
+	height: 5rem;
 	position: absolute;
 	bottom: 0;
 	background-color: rgba(0,0,0,.4);
 	backdrop-filter: blur(5px);
 	color: #fff;
+}
+.card-feature:hover>.floating-on-image{
+	height: 25%;
+}
+.card-feature:hover>.floating-on-image>h4{
+	font-size: 2.5rem;
+}
+.floating-on-image,.floating-on-image>* {
+	transition: all .55s ease-in-out;
 }
 .max-100-vw{
 	max-width: 100vw;
