@@ -13,7 +13,7 @@
   </head>
   <body style="overflow-x:hidden;">
 	<div id="isMobile" class="d-none d-sm-inline"></div>
-	<div id="main-navbar" class="container-fluid">
+	<div id="main-navbar" class="container-fluid max-100-vw">
 		<nav class="navbar navbar-expand-md">
 			<div class="container nav-text">
 					<div class="col-sm-1 d-flex justify-content-end">
@@ -23,15 +23,16 @@
 					</div>
 					<div id="text-brand-name" class="col">
 						<a href="#" class="navbar-brand">
-							<span class="navbar-brand text-small nav-text">
+							<span class="navbar-brand text-small nav-text me-0">
 								<strong>Tunas Toyota Kiaracondong</strong><span id="brand-text-linebreak" class="d-none d-sm-inline"><br></span>
 								<small class="text-muted d-none d-sm-inline">Authorized Toyota Dealer</small>
 							</span>
 						</a>
 					</div>
-				<div class="col-1">
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					  <span class="navbar-toggler-icon"></span>
+				<div class="col-sm-1">
+					<button id="navbar-toggle" class="navbar-toggler btn btn-outline collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<i class="fa-solid fa-bars"></i>
+						<i class="fa-solid fa-xmark"></i>
 					</button>
 				</div>
 				<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -115,7 +116,7 @@
 		</div>
 	</div>
 	
-	<div id="rekomendasi" class="container-fluid max-100-vw mt-4 pt-5 pb-5 bg-body-tertiary">
+	<div id="rekomendasi" class="container-fluid mt-4 pt-5 pb-5 bg-body-tertiary">
 		<div class="container">
 			<div class="row mb-3">
 				<div class="col-lg ext-start">

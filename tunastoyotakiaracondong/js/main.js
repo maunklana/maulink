@@ -12,7 +12,7 @@ function scrollFunction() {
 			$("#brand-text-linebreak").html(`<span class="text-muted">&nbsp;|</span>`);
 		}
 		
-		$("#main-navbar").addClass("fixed-top shadow-lg");
+		$("#main-navbar").addClass("fixed-top shadow-lg ms-0");
 	  } else {
 		if($("#isMobile").is(":visible")){  
 		$(".nav-text,.navbar-toggler-icon").each(function(i){
@@ -22,7 +22,7 @@ function scrollFunction() {
 		$("#brand-text-linebreak").html(`<br/>`);
 		}
 		
-		$("#main-navbar").removeClass("fixed-top shadow-lg");
+		$("#main-navbar").removeClass("fixed-top shadow-lg ms-0");
 	  }
 }
 

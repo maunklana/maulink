@@ -26,3 +26,29 @@
 	height: auto;
 	margin: 0 auto;
 }
+#navbar-toggle{
+	color: #000;
+	background-color: transparent;
+	border: 0;
+}
+#navbar-toggle:hover{
+	background-color: transparent;
+	border: 0;
+}
+#navbar-toggle:focus{
+	background-color: transparent;
+	border: 0;
+	box-shadow: 0 0 0 0;
+}
+#navbar-toggle.collapsed>.fa-xmark{
+	display: none!important;
+}
+#navbar-toggle.collapsed>.fa-bars{
+	display: block!important;
+}
+#navbar-toggle>.fa-xmark{
+	display: block;
+}
+#navbar-toggle>.fa-bars{
+	display: none;
+}
